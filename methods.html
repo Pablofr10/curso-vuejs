@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metódos</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 title="tagMessage">{{message}}</h1>
+      <input
+        type="text"
+        v-on:mouseout="somaNumeros($event.target.value)"
+        id=""
+      />
+      <p>{{soma}}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      let app = new Vue({
+        el: '#app',
+        data: {
+          message: 'Programando com VueJS',
+          soma: 0,
+        },
+        methods: {
+          reverseMessage: function () {
+            this.message = this.message.split('').reverse().join('');
+          },
+          somaNumeros(a) {
+            this.message = a;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
