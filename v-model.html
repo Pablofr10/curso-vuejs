@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diretivas: v-bind</title>
+  </head>
+  <body>
+    <div id="directives">
+      <h3 v-bind:style="{fontSize: textSize + 'px'}">HCode Treinamentos</h3>
+      <input type="text" v-model="textSize" />
+
+      <h3 v-bind:style="{color: colorText}">HCode Treinamentos</h3>
+      <input type="color" v-model="colorText" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+    <script>
+      let app = new Vue({
+        el: '#directives',
+        data: {
+          textSize: 10,
+          colorText: 'black',
+        },
+      });
+    </script>
+  </body>
+</html>
