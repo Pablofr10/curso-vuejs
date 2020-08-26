@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diretivas: v-for</title>
+  </head>
+  <body>
+    <div id="directives">
+      <ul>
+        <li v-for="city in cities">{{city}}</li>
+        <li v-for="(local, index) in locais">{{index}} {{local.nome}}</li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+    <script>
+      let app = new Vue({
+        el: '#directives',
+        data: {
+          cities: [
+            'Nova York',
+            'Brasília',
+            'Rio de Janeiro',
+            'São Paulo',
+            'Curitiba',
+          ],
+          locais: [],
+        },
+        created() {
+          fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+            .then((response) => response.json())
+            .then((x) => {
+              this.locais = x;
+              console.log(x);
+            })
+            .catch((err) => console.log(err));
+        },
+      });
+    </script>
+  </body>
+</html>
