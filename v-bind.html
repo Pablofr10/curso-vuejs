@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diretivas: v-bind</title>
+  </head>
+  <body>
+    <div id="directives">
+      <h2>Acesso o site abaixo</h2>
+      <a :href="url">Clique aqui ir ao site</a>
+      <p :[arg]="value">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore vel
+        mollitia eos alias eum qui minima cum aperiam corrupti nostrum vitae,
+        quia blanditiis quod, officiis ducimus ratione dolorum! Ullam, ratione!
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+    <script>
+      let app = new Vue({
+        el: '#directives',
+        data: {
+          url: 'http://www.g1.globo.com',
+          arg: 'title',
+          value: 'Paragráfo de exemplo',
+        },
+      });
+    </script>
+  </body>
+</html>
