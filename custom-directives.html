@@ -8,7 +8,10 @@
   <body>
     <div id="directives">
       <h2 v-upper>{{name}}</h2>
-      <h2 v-capitalize>hello super mario</h2>
+      <!-- <h2 v-capitalize>hello {{ name }}</h2> -->
+
+      <!-- <h2 v-custom:parametro.mod1.mod2="'elemento'">hello {{ name }}</h2> -->
+      <h2 v-custom="{ direction: argumento, distance}">hello {{ name }}</h2>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -20,20 +23,74 @@
           el.innerText = el.innerText.toUpperCase();
         },
       });
+
+      function setDirection(element, binding) {
+        element.style.margin = 0;
+
+        let direction = binding.value.direction.toLowerCase();
+        let value = binding.value.distance;
+
+        switch (direction) {
+          case 'left':
+          case 'right':
+          case 'botttom':
+          case 'top':
+            let newDirection =
+              direction.charAt(0).toUpperCase() + direction.slice(1);
+
+            eval(`element.style.margin${newDirection} = value + 'px'`);
+            break;
+          default:
+            break;
+        }
+      }
+
       let app = new Vue({
         el: '#directives',
         data: {
           name: 'HCode',
+          argumento: 'left',
+          distance: 150,
         },
         directives: {
-          capitalize: function (element) {
-            let words = element.innerText.split(' ');
+          //   capitalize: {
+          //     bind(element) {
+          //       console.log('BIND - Fui vinculado a um elemento');
+          //     },
 
-            words.forEach((text, index) => {
-              words[index] = text.charAt().toUpperCase() + text.slice(1);
-            });
+          //     inserted(element) {
+          //       console.log('INSERTED - Fui inserido a um elemento');
 
-            element.innerText = words.join(' ');
+          //       let words = element.innerText.split(' ');
+
+          //       words.forEach((text, index) => {
+          //         words[index] = text.charAt().toUpperCase() + text.slice(1);
+          //       });
+
+          //       element.innerText = words.join(' ');
+          //     },
+          //     update(element) {
+          //       console.log('UPDATE - O elemento foi atualizado');
+          //     },
+          //     unbind(element) {
+          //       console.log('UNBIND - O elemento foi desvinculado');
+          //     },
+          //     componentUpdate(element) {
+          //       console.log('UNBIND - O elemento foi atualizado');
+          //     },
+          //   },
+          // },
+
+          custom: {
+            bind(element, binding, vnode) {
+              //   element.style.color = 'red';
+              setDirection(element, binding);
+            },
+
+            update(element, binding, vnode, oldvnode) {
+              //   element.style.textDecoration = 'underline';
+              setDirection(element, binding);
+            },
           },
         },
       });
