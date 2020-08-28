@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estilos em linhas</title>
+  </head>
+  <body>
+    <div id="styles">
+      <input v-model="fontSizeProp" type="text" />
+      <input v-model="colorText" type="color" />
+      <h2 :style="{ fontSize: fontSizeProp + 'px', color: colorText}">
+        Evan You
+      </h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+    <script>
+      let app = new Vue({
+        el: '#styles',
+        data: {
+          fontSizeProp: 20,
+          colorText: 'blue',
+        },
+      });
+    </script>
+  </body>
+</html>
