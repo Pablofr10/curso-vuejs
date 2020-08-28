@@ -12,6 +12,17 @@
       <h2 :style="{ fontSize: fontSizeProp + 'px', color: colorText}">
         Evan You
       </h2>
+
+      <input type="number" v-model="styleRed" placeholder="Vermelho" />
+      <input type="number" v-model="styleGreen" placeholder="Verde" />
+      <input type="number" v-model="styleBlue" placeholder="Azul" />
+
+      <p :style="rgbColor">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, delectus
+        quaerat, quia soluta blanditiis distinctio totam magni asperiores
+        laboriosam nostrum aperiam laborum quisquam ducimus commodi ullam
+        tempore, dolore error autem.
+      </p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -23,6 +34,16 @@
         data: {
           fontSizeProp: 20,
           colorText: 'blue',
+          styleRed: 100,
+          styleGreen: 88,
+          styleBlue: 0,
+        },
+        computed: {
+          rgbColor() {
+            return {
+              color: `rgb(${this.styleRed}, ${this.styleGreen}, ${this.styleBlue})`,
+            };
+          },
         },
       });
     </script>
