@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animação CSS</title>
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" />
+  </head>
+  <body>
+    <div id="transition">
+      <transition
+        name="animation-first"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+        @enter-cancelled="enterCancelled"
+        @before-leave="beforeLeave"
+        @leave="leave"
+        @after-leave="afterLeave"
+        @leave-cancelled="leaveCancelled"
+      >
+        <h1 v-if="show">HCode Treinamentos Animações</h1>
+      </transition>
+
+      <hr />
+
+      <button @click="show = !show" class="btn btn-outline-info">
+        Clique aqui
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+    <script>
+      let app = new Vue({
+        el: '#transition',
+        data: {
+          show: true,
+        },
+        methods: {
+          beforeEnter() {
+            console.log('beforeEnter');
+          },
+          enter() {
+            console.log('beforeEnter');
+          },
+          afterEnter(element) {
+            console.log('afterEnter', element);
+
+            document.querySelector('h1').style.backgroundColor = '#ccc';
+            document.querySelector('h1').style.color = 'red';
+            alert('O elemento foi oculto');
+          },
+          enterCancelled() {
+            console.log('enterCancelled');
+          },
+          beforeLeave() {
+            console.log('beforeLeave');
+          },
+          leave() {
+            console.log('leave');
+          },
+          afterLeave() {
+            console.log('afterLeave');
+          },
+          leaveCancelled() {
+            console.log('leaveCancelled');
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

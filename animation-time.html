@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animação CSS - Duração</title>
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" />
+  </head>
+  <body>
+    <div id="transition">
+      <h1>HCode Treinamentos Animações</h1>
+
+      <!-- Duration fixa
+      <transition
+        name="animation-first"
+        enter-active-class="bounceIn"
+        leave-active-class="bounceOut"
+        :duration="800"
+      >
+        <h2 v-if="show">Djalma, bora gravar</h2>
+      </transition>
+      -->
+
+      <transition
+        name="animation-first"
+        enter-active-class="animated rollIn"
+        leave-active-class="animated zoomOut"
+        :duration="{enter: 800, leave: 100}"
+      >
+        <h2 v-if="show">Djalma, bora gravar</h2>
+      </transition>
+
+      <button @click="show = !show" class="btn btn-outline-info">
+        Clique aqui
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+    <script>
+      let app = new Vue({
+        el: '#transition',
+        data: {
+          show: true,
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>
