@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estilos em linhas - Array</title>
+  </head>
+  <body>
+    <div id="styles">
+      <a
+        href="http://www.hcode.com.br"
+        :style="[fontSizeStyle, colorStyle, linkStyle]"
+      >
+        HCode Treinamentos</a
+      >
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      let app = new Vue({
+        el: '#styles',
+        data: {
+          fontSizeStyle: {
+            fontSize: '30px',
+          },
+          colorStyle: {
+            color: 'red',
+          },
+          linkStyle: {
+            textDecoration: 'none',
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
