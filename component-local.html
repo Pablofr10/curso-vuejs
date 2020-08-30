@@ -4,20 +4,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Component - Global</title>
+    <title>Component - Local</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 
 <body>
     <div id="components">
         <div class="container">
-            <text-render text="HCode Treinamentos"></text-render>
-            <text-render text="Sejam bem vindos"></text-render>
             <text-render text="Olá mundo"></text-render>
 
             <hr>
 
-            <list-component></list-component>
+            <list></list>
 
         </div>
     </div>
@@ -34,6 +32,8 @@
             `
         });
 
+        /* Component Global
+        
         Vue.component('list-component', {
             template: `]
                 <ul>
@@ -45,15 +45,38 @@
                     names: ['João Rangel', 'Djalma S', 'Gláucio Daniel', 'Lucas Gabriel']
                 }
             }
+        });
+
+        */
+
+        let listItemComponent = {
+            props: ['name'],
+            template: `<li>{{name}}</li>`
         }
 
-        );
-
+        let listComponent = {
+            template: `
+                <ul>
+                    <list-item v-for="person in names" :name="person"></list-item>
+                </ul>
+            `,
+            data: function () {
+                return {
+                    names: ['João Rangel', 'Djalma S', 'Gláucio Daniel', 'Lucas Gabriel']
+                }
+            },
+            components: {
+                listItem: listItemComponent
+            }
+        }
 
         let app = new Vue({
             el: '#components',
             data: {
 
+            },
+            components: {
+                list: listComponent
             }
         });
     </script>
