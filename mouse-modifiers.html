@@ -16,20 +16,12 @@
             <form action="" class="form-group" @submit.prevent>
                 <label for="">Pressione as teclas abaixo</label>
 
-                <input type="text" placeholder="Pressione Ctrl" class="form-control" @keydown.ctrl="exec" />
-                <input type="text" placeholder="Pressione Alt" class="form-control" @keydown.alt="exec" />
-                <input type="text" placeholder="Pressione Shift" class="form-control" @keydown.shift="exec" />
-                <input type="text" placeholder="Pressione Meta" class="form-control" @keydown.meta="exec" />
+                <input type="text" placeholder="Clique no botão esquerdo do mouse" class="form-control"
+                    @click.left="exec" />
+                <input type="text" placeholder="Clique no botão direito do mouse" class="form-control"
+                    @click.prevent.right="exec" />
+                <input type="text" placeholder="Role o mouse" class="form-control" @click.middle="exec" />
             </form>
-
-            <hr>
-
-            <div class="row">
-                <div class="col" @click.ctrl.exact="toggleClass">1</div>
-                <div class="col" @click.ctrl.exact="toggleClass">2</div>
-                <div class="col" @click.ctrl.exact="toggleClass">3</div>
-                <div class="col" @click.ctrl.exact="toggleClass">4</div>
-            </div>
         </div>
     </div>
 
@@ -43,15 +35,8 @@
             },
             methods: {
                 exec(e) {
-                    console.log(e.key);
+                    console.log(e.type);
                 },
-                toggleClass(e) {
-                    let el = e.target;
-
-                    let acaoClass = el.classList.contains('bg-info') ? "remove" : "add";
-
-                    eval(`el.classList.${acaoClass}('bg-info');`);
-                }
             },
         });
     </script>
