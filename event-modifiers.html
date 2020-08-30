@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos - Event Object</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div id="events">
+      <div class="container">
+        <h1>HCode Treinamentos</h1>
+        <form action="" class="form">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="#formName">Name</label>
+                <input
+                  type="text"
+                  id="formName"
+                  name="username"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-group">
+                <label for="#formEmail">Email</label>
+                <input
+                  type="email"
+                  id="formEmail"
+                  name="email"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Digite sua Mensagem</label>
+            <textarea
+              class="form-control"
+              name="message"
+              id=""
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+
+          <button
+            @click.prevent="send($event)"
+            type="submit"
+            class="btn btn-primary"
+          >
+            Enviar formulário
+          </button>
+        </form>
+
+        <a
+          href="http://www.youtube.com/hcodebrasil"
+          @click.prevent.once="chama()"
+          >Ir para o Youtube da HCODE</a
+        >
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      let app = new Vue({
+        el: '#events',
+        data: {
+          counter: 0,
+        },
+        methods: {
+          send(event) {
+            let form = event.target.form;
+
+            let data = new FormData(form);
+
+            for (const d of data.entries()) {
+              console.log(d);
+            }
+          },
+          chama() {
+            alert('Olá');
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
