@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modificadores de teclado</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div id="events">
+        <div class="container">
+            <h1>HCode Treinamentos</h1>
+            <form action="" class="form" @submit.prevent>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="#formName">Name</label>
+                            <input type="text" id="formName" name="username" class="form-control"
+                                @keyup.enter="send($event)" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form action="" class="form-group">
+                <label for="">Pressione as teclas abaixo</label>
+
+                <input type="text" name="abx" placeholder="Pressione enter" class="form-control" @keyup.enter="exec" />
+                <input type="text" name="tab" placeholder="Pressione tab" class="form-control" @keydown.tab="exec" />
+                <input type="text" name="abx" placeholder="Pressione delete" class="form-control"
+                    @keyup.delete="exec" />
+                <input type="text" name="abx" placeholder="Pressione esc" class="form-control" @keyup.esc="exec" />
+                <input type="text" name="abx" placeholder="Pressione space" class="form-control" @keyup.space="exec" />
+                <input type="text" name="abx" placeholder="Pressione para cima" class="form-control" @keyup.up="exec" />
+                <input type="text" name="abx" placeholder="Pressione para baixo" class="form-control"
+                    @keyup.down="exec" />
+                <input type="text" name="abx" placeholder="Pressione para esquerda" class="form-control"
+                    @keyup.left="exec" />
+                <input type="text" name="abx" placeholder="Pressione para a direita" class="form-control"
+                    @keyup.right="exec" />
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        let app = new Vue({
+            el: '#events',
+            data: {
+                counter: 0,
+            },
+            methods: {
+                send(event) {
+                    let form = event.target.form;
+
+                    let data = new FormData(form);
+
+                    for (const d of data.entries()) {
+                        console.log(d);
+                    }
+                },
+                chama() {
+                    alert('Olá');
+                },
+
+                exec(e) {
+                    console.log(e.key);
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
